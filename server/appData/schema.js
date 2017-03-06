@@ -1,7 +1,6 @@
 /* eslint no-underscore-dangle: off*/
 /* eslint "arrow-body-style": off */
 /* eslint "no-use-before-define": off */
-/* eslint-disable */
 
 import {
   GraphQLList,
@@ -27,13 +26,13 @@ const User = new GraphQLObjectType({
     skillLevels: {
       type: new GraphQLList(SkillLevel),
       description: 'Returns list of skills for certain user',
-      resolve: user => {
-        return user._level_skills.map(singleLevelSkill => {
+      resolve: (user) => {
+        return user._level_skills.map((singleLevelSkill) => {
           return LEVEL_SKILL.findOne({ _id: singleLevelSkill }, (err, res) => {
             if (err) return err;
             return res;
-          })
-        })
+          });
+        });
       }
     }
   })
@@ -48,13 +47,13 @@ const Skill = new GraphQLObjectType({
     skillLevels: {
       type: new GraphQLList(SkillLevel),
       description: 'Returns list of levels corrsponding to the skill. It is similar to list of grades for a certain subject in school',
-      resolve: skill => {
-        return skill._level_skills.map(singleLevelSkill => {
+      resolve: (skill) => {
+        return skill._level_skills.map((singleLevelSkill) => {
           return LEVEL_SKILL.findOne({ _id: singleLevelSkill }, (err, res) => {
             if (err) return err;
             return res;
-          })
-        })
+          });
+        });
       }
     }
   })
@@ -73,15 +72,15 @@ const SkillLevel = new GraphQLObjectType({
     user: {
       type: User,
       description: 'Owner of the skill',
-      resolve: skillLevel => {
-        return USER.findOne({ _id: skillLevel.user})
+      resolve: (skillLevel) => {
+        return USER.findOne({ _id: skillLevel.user });
       }
     },
     skill: {
       type: Skill,
       description: 'Rated skill',
-      resolve: skillLevel => {
-        return SKILL.findOne({ _id: skillLevel.skill})
+      resolve: (skillLevel) => {
+        return SKILL.findOne({ _id: skillLevel.skill });
       }
     }
   })
