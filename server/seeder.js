@@ -12,39 +12,40 @@ const users = [
     firstName: 'Severus',
     lastName: 'Snape',
     role: 'Node.js Magican',
-    level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aada', '28951027734d1d3956c4aaaa']
+    _level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aada', '28951027734d1d3956c4aaaa']
   },
   {
     _id: '58951027734d1d3956c4caaa',
     firstName: 'Albus',
     lastName: 'Dumbledore',
     role: 'Fullstack Archmage',
-    level_skills: ['58951027734d1d3956c4aaca', '58951027734d1d3956c4aaea', '58951027734d1d3956c4aaja']
+    _level_skills: ['58951027734d1d3956c4aaca', '58951027734d1d3956c4aaea', '58951027734d1d3956c4aaja']
   },
   {
     _id: '58951027734d1d3956c4daaa',
     firstName: 'Ron',
     lastName: 'Weasley',
     role: 'Frontend developer',
-    level_skills: ['18951027734d1d3956c4aaaa', '38951027734d1d3956c4aaaa', '48951027734d1d3956c4aaaa']
-  }
+    _level_skills: ['18951027734d1d3956c4aaaa', '38951027734d1d3956c4aaaa', '48951027734d1d3956c4aaaa']
+  },
 ];
+
 
 const skills = [
   {
     _id: '58951027734d1d3956c4abaa',
     name: 'Node.js',
-    level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aaca', '18951027734d1d3956c4aaaa']
+    _level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aaca', '18951027734d1d3956c4aaaa']
   },
   {
     _id: '58951027734d1d3956c4acaa',
     name: 'GraphQL',
-    level_skills: ['58951027734d1d3956c4aada', '58951027734d1d3956c4aaea', '38951027734d1d3956c4aaaa']
+    _level_skills: ['58951027734d1d3956c4aada', '58951027734d1d3956c4aaea', '38951027734d1d3956c4aaaa']
   },
   {
     _id: '58951027734d1d3956c4adaa',
     name: 'javascript',
-    level_skills: ['28951027734d1d3956c4aaaa', '58951027734d1d3956c4aaja', '48951027734d1d3956c4aaaa']
+    _level_skills: ['28951027734d1d3956c4aaaa', '58951027734d1d3956c4aaja', '48951027734d1d3956c4aaaa']
   }
 ];
 
@@ -96,7 +97,7 @@ const levelSkills = [
     _id: '48951027734d1d3956c4aaaa',
     level: 3,
     favorite: false
-  },
+  }
 ];
 
 
