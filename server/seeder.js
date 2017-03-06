@@ -12,21 +12,21 @@ const users = [
     firstName: 'Severus',
     lastName: 'Snape',
     role: 'Node.js Magican',
-    level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aada', '28951027734d1d3956c4aaaa']
+    _level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aada', '28951027734d1d3956c4aaaa']
   },
   {
     _id: '58951027734d1d3956c4caaa',
     firstName: 'Albus',
     lastName: 'Dumbledore',
     role: 'Fullstack Archmage',
-    level_skills: ['58951027734d1d3956c4aaca', '58951027734d1d3956c4aaea', '58951027734d1d3956c4aaja']
+    _level_skills: ['58951027734d1d3956c4aaca', '58951027734d1d3956c4aaea', '58951027734d1d3956c4aafa']
   },
   {
     _id: '58951027734d1d3956c4daaa',
     firstName: 'Ron',
     lastName: 'Weasley',
     role: 'Frontend developer',
-    level_skills: ['18951027734d1d3956c4aaaa', '38951027734d1d3956c4aaaa', '48951027734d1d3956c4aaaa']
+    _level_skills: ['18951027734d1d3956c4aaaa', '38951027734d1d3956c4aaaa', '48951027734d1d3956c4aaaa']
   }
 ];
 
@@ -34,17 +34,17 @@ const skills = [
   {
     _id: '58951027734d1d3956c4abaa',
     name: 'Node.js',
-    level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aaca', '18951027734d1d3956c4aaaa']
+    _level_skills: ['58951027734d1d3956c4aaba', '58951027734d1d3956c4aaca', '18951027734d1d3956c4aaaa']
   },
   {
     _id: '58951027734d1d3956c4acaa',
     name: 'GraphQL',
-    level_skills: ['58951027734d1d3956c4aada', '58951027734d1d3956c4aaea', '38951027734d1d3956c4aaaa']
+    _level_skills: ['58951027734d1d3956c4aada', '58951027734d1d3956c4aaea', '38951027734d1d3956c4aaaa']
   },
   {
     _id: '58951027734d1d3956c4adaa',
-    name: 'javascript',
-    level_skills: ['28951027734d1d3956c4aaaa', '58951027734d1d3956c4aaja', '48951027734d1d3956c4aaaa']
+    name: 'Javascript',
+    _level_skills: ['28951027734d1d3956c4aaaa', '58951027734d1d3956c4aafa', '48951027734d1d3956c4aaaa']
   }
 ];
 
@@ -101,8 +101,8 @@ const levelSkills = [
 
 
 const seedlevelSkills = () => levelSkills.map(singleLevelSkill => (new LEVEL_SKILL(singleLevelSkill)).save((err, savedLevelSkill) => { if (err) return err; return console.log(chalk.blue(`Skill level with _id: ${savedLevelSkill._id} seeded`)); }));
-const seedSkills = () => skills.map(singleSkill => (new SKILL(singleSkill)).save((err, savedSkill) => { if (err) return err; return console.log(chalk.blue(`Skill with _id: ${savedSkill._id} seeded`)); }));
-const seedUsers = () => users.map(singleUser => (new USER(singleUser)).save((err, savedUser) => { if (err) return err; return console.log(chalk.blue(`User with _id: ${savedUser._id} seeded`)); }));
+const seedSkills = () => skills.map(singleSkill => (new SKILL(singleSkill)).save((err, savedSkill) => { if (err) return console.error(err); return console.log(chalk.blue(`Skill with _id: ${savedSkill._id} seeded`)); }));
+const seedUsers = () => users.map(singleUser => (new USER(singleUser)).save((err, savedUser) => { if (err) return console.error(err); return console.log(chalk.blue(`User with _id: ${savedUser._id} seeded`)); }));
 
 const seeder = () => {
   seedUsers();
