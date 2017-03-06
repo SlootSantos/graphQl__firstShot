@@ -24,11 +24,11 @@ const User = new GraphQLObjectType({
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
     role: { type: GraphQLString },
-    level_skills: {
+    skillLevels: {
       type: new GraphQLList(SkillLevel),
       description: 'Returns list of skills for certain user',
       resolve: user => {
-        return user._level_skills.map((singleLevelSkill) => {
+        return user._level_skills.map(singleLevelSkill => {
           return LEVEL_SKILL.findOne({ _id: singleLevelSkill }, (err, res) => {
             if (err) return err;
             return res;
@@ -44,7 +44,19 @@ const Skill = new GraphQLObjectType({
   description: 'Represents skill',
   fields: () => ({
     _id: { type: GraphQLString },
-    name: { type: GraphQLString }
+    name: { type: GraphQLString },
+    skillLevels: {
+      type: new GraphQLList(SkillLevel),
+      description: 'Returns list of levels corrsponding to the skill. It is similar to list of grades for a certain subject in school',
+      resolve: skill => {
+        return skill._level_skills.map(singleLevelSkill => {
+          return LEVEL_SKILL.findOne({ _id: singleLevelSkill }, (err, res) => {
+            if (err) return err;
+            return res;
+          })
+        })
+      }
+    }
   })
 });
 
@@ -57,10 +69,23 @@ const SkillLevel = new GraphQLObjectType({
       type: GraphQLString,
       description: 'Actual skill level, ranked from 1 to 3'
     },
-    favorite: { type: GraphQLBoolean }
+    favorite: { type: GraphQLBoolean },
+    user: {
+      type: User,
+      description: 'Owner of the skill',
+      resolve: skillLevel => {
+        return USER.findOne({ _id: skillLevel.user})
+      }
+    },
+    skill: {
+      type: Skill,
+      description: 'Rated skill',
+      resolve: skillLevel => {
+        return SKILL.findOne({ _id: skillLevel.skill})
+      }
+    }
   })
 });
-
 
 const Query = new GraphQLObjectType({
   name: 'ProfileSchema',

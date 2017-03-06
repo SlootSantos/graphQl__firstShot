@@ -54,55 +54,73 @@ const levelSkills = [
     _id: '58951027734d1d3956c4aaba',
     level: 3,
     favorite: true,
+    user: '58951027734d1d3956c4baaa',
+    skill: '58951027734d1d3956c4abaa'
   },
   {
     _id: '58951027734d1d3956c4aaca',
     level: 1,
-    favorite: false
+    favorite: false,
+    user: '58951027734d1d3956c4caaa',
+    skill: '58951027734d1d3956c4abaa'
   },
   {
     _id: '18951027734d1d3956c4aaaa',
     level: 2,
-    favorite: true
+    favorite: true,
+    user: '58951027734d1d3956c4daaa',
+    skill: '58951027734d1d3956c4abaa'
   },
   // three next ones are for GraphQL
   {
     _id: '58951027734d1d3956c4aada',
     level: 3,
     favorite: true,
+    user: '58951027734d1d3956c4baaa',
+    skill: '58951027734d1d3956c4acaa'
   },
   {
     _id: '58951027734d1d3956c4aaea',
     level: 2,
-    favorite: true
+    favorite: true,
+    user: '58951027734d1d3956c4caaa',
+    skill: '58951027734d1d3956c4acaa'
   },
   {
     _id: '58951027734d1d3956c4aafa',
     level: 3,
     favorite: true,
+    user: '58951027734d1d3956c4caaa',
+    skill: '58951027734d1d3956c4acaa'
   },
   // last ones are js
   {
     _id: '28951027734d1d3956c4aaaa',
     level: 1,
     favorite: false,
+    user: '58951027734d1d3956c4baaa',
+    skill: '58951027734d1d3956c4adaa'
   },
   {
     _id: '38951027734d1d3956c4aaaa',
     level: 3,
     favorite: true,
+    user: '58951027734d1d3956c4baaa',
+    skill: '58951027734d1d3956c4adaa'
   },
   {
     _id: '48951027734d1d3956c4aaaa',
     level: 3,
-    favorite: false
+    favorite: false,
+    user: '58951027734d1d3956c4baaa',
+    skill: '58951027734d1d3956c4adaa'
   },
 ];
 
 
 const seedlevelSkills = () => levelSkills.map(singleLevelSkill => (new LEVEL_SKILL(singleLevelSkill)).save((err, savedLevelSkill) => { if (err) return err; return console.log(chalk.blue(`Skill level with _id: ${savedLevelSkill._id} seeded`)); }));
-const seedSkills = () => skills.map(singleSkill => (new SKILL(singleSkill)).save((err, savedSkill) => { if (err) return console.error(err); return console.log(chalk.blue(`Skill with _id: ${savedSkill._id} seeded`)); }));
-const seedUsers = () => users.map(singleUser => (new USER(singleUser)).save((err, savedUser) => { if (err) return console.error(err); return console.log(chalk.blue(`User with _id: ${savedUser._id} seeded`)); }));
+const seedSkills = () => skills.map(singleSkill => (new SKILL(singleSkill)).save((err, savedSkill) => { if (err) return err; return console.log(chalk.blue(`Skill with _id: ${savedSkill._id} seeded`)); }));
+const seedUsers = () => users.map(singleUser => (new USER(singleUser)).save((err, savedUser) => { if (err) return err; return console.log(chalk.blue(`User with _id: ${savedUser._id} seeded`)); }));
 
 const seeder = () => {
   seedUsers();
