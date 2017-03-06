@@ -19,7 +19,7 @@ const users = [
     firstName: 'Albus',
     lastName: 'Dumbledore',
     role: 'Fullstack Archmage',
-    _level_skills: ['58951027734d1d3956c4aaca', '58951027734d1d3956c4aaea', '58951027734d1d3956c4aaja']
+    _level_skills: ['58951027734d1d3956c4aaca', '58951027734d1d3956c4aaea', '58951027734d1d3956c4aafa']
   },
   {
     _id: '58951027734d1d3956c4daaa',
@@ -27,9 +27,8 @@ const users = [
     lastName: 'Weasley',
     role: 'Frontend developer',
     _level_skills: ['18951027734d1d3956c4aaaa', '38951027734d1d3956c4aaaa', '48951027734d1d3956c4aaaa']
-  },
+  }
 ];
-
 
 const skills = [
   {
@@ -44,8 +43,8 @@ const skills = [
   },
   {
     _id: '58951027734d1d3956c4adaa',
-    name: 'javascript',
-    _level_skills: ['28951027734d1d3956c4aaaa', '58951027734d1d3956c4aaja', '48951027734d1d3956c4aaaa']
+    name: 'Javascript',
+    _level_skills: ['28951027734d1d3956c4aaaa', '58951027734d1d3956c4aafa', '48951027734d1d3956c4aaaa']
   }
 ];
 
@@ -97,13 +96,13 @@ const levelSkills = [
     _id: '48951027734d1d3956c4aaaa',
     level: 3,
     favorite: false
-  }
+  },
 ];
 
 
 const seedlevelSkills = () => levelSkills.map(singleLevelSkill => (new LEVEL_SKILL(singleLevelSkill)).save((err, savedLevelSkill) => { if (err) return err; return console.log(chalk.blue(`Skill level with _id: ${savedLevelSkill._id} seeded`)); }));
-const seedSkills = () => skills.map(singleSkill => (new SKILL(singleSkill)).save((err, savedSkill) => { if (err) return err; return console.log(chalk.blue(`Skill with _id: ${savedSkill._id} seeded`)); }));
-const seedUsers = () => users.map(singleUser => (new USER(singleUser)).save((err, savedUser) => { if (err) return err; return console.log(chalk.blue(`User with _id: ${savedUser._id} seeded`)); }));
+const seedSkills = () => skills.map(singleSkill => (new SKILL(singleSkill)).save((err, savedSkill) => { if (err) return console.error(err); return console.log(chalk.blue(`Skill with _id: ${savedSkill._id} seeded`)); }));
+const seedUsers = () => users.map(singleUser => (new USER(singleUser)).save((err, savedUser) => { if (err) return console.error(err); return console.log(chalk.blue(`User with _id: ${savedUser._id} seeded`)); }));
 
 const seeder = () => {
   seedUsers();
