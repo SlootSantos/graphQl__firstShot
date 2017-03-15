@@ -65,7 +65,7 @@ const SkillLevel = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLString },
     level: {
-      type: GraphQLString,
+      type: GraphQLInt,
       description: 'Actual skill level, ranked from 1 to 3'
     },
     favorite: { type: GraphQLBoolean },
@@ -118,7 +118,6 @@ const Query = new GraphQLObjectType({
     skillLevels: {
       type: new GraphQLList(SkillLevel),
       description: 'List of levels of certain skills for example { javascript: 3, favorite: true }.',
-      level: GraphQLInt,
       resolve: () => {
         return LEVEL_SKILL.find({}, (err, res) => {
           return res;
